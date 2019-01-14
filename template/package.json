@@ -12,8 +12,8 @@
         {{/lint}}
         "dev": "node scripts/bin/dev.js",
         "build": "node scripts/bin/prod.js",
-        "stg": "node scripts/stg.js",
-        "test": "node scripts/testing.js"
+        "stg": "node scripts/bin/stg.js",
+        "testing": "node scripts/bin/testing.js"
     },
     "devDependencies": {
         "babel-core": "^6.26.3",
