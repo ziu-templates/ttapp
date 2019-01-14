@@ -11,7 +11,7 @@ const path = require('path'),
 module.exports = ENV === 'development' ? [] : [new CopyWebpackPlugin([
     {
         context: process.cwd(),
-        from: conf[ENV].pkgConfigName,
+        from: `src/${conf[ENV].pkgConfigName}`,
         to: path.resolve(process.cwd(), conf[ENV].dirname),
         transform(content) {
             return rePkgConfig(content.toString());
