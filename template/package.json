@@ -8,7 +8,7 @@
         "start": "node build/dev.js",
         {{#lint}}
         "fix": "npm run lint -- --fix",
-        "lint": "eslint --ext .js src -c build/.eslintrc.js",
+        "lint": "eslint --ext .js src -c scripts/.eslintrc.js",
         {{/lint}}
         "dev": "node scripts/bin/dev.js",
         "build": "node scripts/bin/prod.js",
