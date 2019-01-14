@@ -12,7 +12,7 @@
         {{/lint}}
         "dev": "node scripts/bin/dev.js",
         "build": "node scripts/bin/prod.js",
-        "stg": "node scripts/bin/stg.js",
+        "stg": "node scripts/bin/staging.js",
         "testing": "node scripts/bin/testing.js"
     },
     "devDependencies": {
