@@ -7,7 +7,6 @@ module.exports = function(content = '{}') {
     let pkgConf = '';
     try {
         pkgConf = JSON.stringify(merge(JSON.parse(content), distPkg));
-        console.log(pkgConf);
     } catch(e) {
         throw e;
     }
