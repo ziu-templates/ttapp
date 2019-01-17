@@ -1,7 +1,7 @@
 ## {{ name }}
 ----------------------------
 author: {{ author }} <br>
-description: {{ author }}
+description: {{ description }}
 
 <br>
 ###配置说明：
