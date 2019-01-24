@@ -5,8 +5,7 @@ const path = require('path');
 
 function getPrjConfig({
                           UglifyJs = true,
-                          codePath = path.resolve(process.cwd(), 'dist'),
-                          dirname = 'dist'
+                          codePath = path.resolve(process.cwd(), 'dist')
                       } = {}) {
     return {
         UglifyJs,
@@ -22,8 +21,7 @@ module.exports = {
     cssSuffix: 'ttss',
     development: getPrjConfig({
         UglifyJs: false,
-        codePath: path.resolve(process.cwd(), 'dev'),
-        dirname: 'dev'
+        codePath: path.resolve(process.cwd(), 'dev')
     }),
     testing: getPrjConfig(),
     staging: getPrjConfig(),
