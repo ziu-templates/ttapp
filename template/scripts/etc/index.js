@@ -10,7 +10,6 @@ function getPrjConfig({
     return {
         UglifyJs,
         codePath,
-        dirname,
         pkgConfigName: 'project.config.json'
     };
 }
