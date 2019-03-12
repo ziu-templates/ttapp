@@ -3,12 +3,15 @@
     [
       "env",
       {
-        "modules": false
+        "modules": false,
+        "targets": {
+          "esmodules": true
+        }
       }
     ],
     "stage-2"
   ],
-  "plugins": ["transform-es2015-modules-commonjs", "transform-runtime"],
+  "plugins": ["transform-runtime"],
   "comments": false,
   "env": {
     "test": {
