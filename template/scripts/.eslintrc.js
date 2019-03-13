@@ -17,6 +17,7 @@ module.exports = {
     es6: true,
   },
   extends: '{{ lintConfig }}',
+  plugins: ['import'],
   globals: getGlobalVar(globalVariable),
   // add your custom rules here
   rules: {
