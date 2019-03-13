@@ -10,6 +10,10 @@
         "fix": "npm run lint -- --fix",
         "lint": "eslint --ext .js src -c scripts/.eslintrc.js",
         {{/lint}}
+        {{#gitCommitMsg}}
+        "husky": "node node_modules/husky/lib/installer/bin install",
+        "unhusky": "node node_modules/husky/lib/installer/bin uninstall",
+        {{/gitCommitMsg}}
         "dev": "node scripts/bin/dev.js",
         "build": "node scripts/bin/prod.js",
         "stg": "node scripts/bin/staging.js",
