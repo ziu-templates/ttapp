@@ -5,7 +5,7 @@
 const builder = require('../lib/build'),
   exitEvent = require('../lib/exitEvent'),
   conf = require('../etc'),
-  defaultPathurl = `${conf[process.env.PRJ_ENV].codePath}/**/*`,,
+  defaultPathurl = `${conf[process.env.PRJ_ENV].codePath}/**/*`,
   rmFiles = require('../lib/utils/rmFiles');
 
 module.exports = function(pathurl = defaultPathurl) {
