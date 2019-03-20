@@ -3,57 +3,50 @@
  */
 
 const webpack = require('webpack'),
-    baseConfig = require('../lib/webpack.base'),
-    scssConfigs = require('../lib/webpack.scss')
-{{#lint}},
-runEslint = require('../lib/runEslint')
-{{/lint}};
+  ora = require('ora'),
+  baseConfig = require('./webpack/webpack.base.config');
 
-    let configs = [...scssConfigs, baseConfig],
-        compilerTimes = 1,
-        /**
-         * [compiler 初始化webpack配置]
-         */
-        compiler = webpack(configs);
+let compilerTimes = 1,
+  /**
+   * [compiler 初始化webpack配置]
+   */
+  compiler = webpack(baseConfig);
 
-    module.exports = {
-        /**
-         * [启动编译]
-         */
-        runCompile(cb = () => {}) {
-            compiler.run((err) => {
-                if (err) {
-                    throw err;
-                }
-                cb();
-            });
-            return true;
-        },
-        /**
-         * [监听改变]
-         */
-        watch() {
-            return compiler.watch({
-                aggregateTimeout: 300,
-                poll: 1000
-            }, (err, stats) => {
-                if (err) {
-                    throw err;
-                }
-                // console.log(stats.toString());
-                if (compilerTimes !== 1) {
-                    console.log(`Compilation success! ${compilerTimes} times \n`);
-                }
-                console.log('watching...\n');
-                ++compilerTimes;
-                {{#lint}}
-                /**
-                 * 执行eslint检测
-                 */
-                runEslint(() => {
-                    console.log('watching...\n');
-                });
-                {{/lint}}
-                });
-        }
-    };
+const spinner = ora('Compiling Start....').start();
+spinner.color = 'yellow';
+
+module.exports = {
+  /**
+   * [启动编译]
+   */
+  runCompile(cb = () => {
+  }) {
+    compiler.run((err) => {
+      spinner.stop();
+      if (err) {
+        throw err;
+      }
+      cb();
+    });
+    return true;
+  },
+  /**
+   * [监听改变]
+   */
+  watch() {
+    return compiler.watch({
+      aggregateTimeout: 300,
+      poll: 1000
+    }, (err, stats) => {
+      spinner.stop();
+      if (err) {
+        throw err;
+      }
+      if (compilerTimes !== 1) {
+        console.log(`Compilation success! ${compilerTimes} times \n`);
+      }
+      console.log('watching...\n');
+      ++compilerTimes;
+    });
+  }
+};

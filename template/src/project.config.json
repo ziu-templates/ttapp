@@ -1,4 +1,50 @@
 {
+  "description": "{{ description }}",
+  "miniprogramRoot": ".",
+  "packOptions": {
+    "ignore": [
+      {
+        "type": "suffix",
+        "value": ".scss"
+      },
+      {
+        "type": "folder",
+        "value": "scripts"
+      },
+      {
+        "type": "folder",
+        "value": "docs"
+      },
+      {
+        "type": "folder",
+        "value": "src"
+      },
+      {
+        "type": "folder",
+        "value": "node_modules"
+      },
+      {
+        "type": "file",
+        "value": ".babelrc"
+      },
+      {
+        "type": "file",
+        "value": ".gitignore"
+      },
+      {
+        "type": "file",
+        "value": "package.json"
+      },
+      {
+        "type": "file",
+        "value": "package-lock.json"
+      },
+      {
+        "type": "file",
+        "value": "README.md"
+      }
+    ]
+  },
   "setting": {
     "urlCheck": false,
     "es6": true,
@@ -9,6 +55,30 @@
     "autoAudits": false,
     "uglifyFileName": false
   },
+  "compileType": "miniprogram",
+  "libVersion": "1.9.0",
   "appid": "",
-  "projectname": "{{ name }}"
+  "projectname": "{{ name }}",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": -1,
+      "list": []
+    }
+  }
 }

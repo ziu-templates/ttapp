@@ -1,12 +1,4 @@
 // http://eslint.org/docs/user-guide/configuring
-const globalVariable = require('./etc').globalVariable;
-function getGlobalVar(globals = []) {
-  return globals.reduce((total, currentValue) => {
-    total[currentValue] = false;
-    return total;
-  }, {});
-}
-
 
 module.exports = {
   root: true,
@@ -16,9 +8,8 @@ module.exports = {
   env: {
     es6: true,
   },
-  extends: '{{ lintConfig }}',
   plugins: ['import'],
-  globals: getGlobalVar(globalVariable),
+  extends: ['airbnb', 'ziu'],
   // add your custom rules here
   rules: {
     // not require constant expressions in conditions

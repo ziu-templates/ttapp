@@ -1,4 +1,0 @@
-cli/**/*.js
-node_modules/*.js
-lib/**/*.js
-utils/**/*.js

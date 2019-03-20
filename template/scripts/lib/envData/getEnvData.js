@@ -22,12 +22,12 @@ if (isExists(runtimeEnvPath)) {
   }).parsed || {};
 }
 
-let env = merge(defaultEnv, runtimeEnv),
+let env = merge({
+    PRJ_ENV: process.env.PRJ_ENV
+  }, defaultEnv, runtimeEnv),
   injectionEnv = {};
 
 Object.keys(env).forEach((key) => {
   injectionEnv[key] = JSON.stringify(env[key]);
 });
 module.exports = injectionEnv;
-
-

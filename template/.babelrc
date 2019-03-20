@@ -1,28 +1,28 @@
 {
   "presets": [
+    "minify",
     [
-      "env",
+      "@babel/preset-env",
       {
         "modules": false,
         "targets": {
+          "browsers": [
+            "Android >= 5",
+            "iOS >= 11"
+          ],
           "esmodules": true
         }
       }
-    ],
-    "stage-2"
+    ]
   ],
-  "plugins": ["transform-runtime"],
-  "comments": false,
-  "env": {
-    "test": {
-      "presets": [
-        "es2015",
-        "env",
-        "stage-0"
-      ],
-      "plugins": [
-        "istanbul"
-      ]
-    }
-  }
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "helpers": false,
+        "regenerator": true
+      }
+    ]
+  ],
+  "comments": false
 }

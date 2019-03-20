@@ -1,9 +1,7 @@
 /**
  * 全局
  */
-import { env } from './vendor';
-
-console.log(env);
+console.log(process.env.outData);
 App({
   onLaunch() {
   },

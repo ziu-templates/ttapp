@@ -1,4 +1,0 @@
-**/*.scss
-cli/**/*
-node_modules/**/*
-docs/**/*
