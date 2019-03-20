@@ -19,7 +19,7 @@ module.exports = {
   cssSuffix: 'ttss',
   xmlSuffix: 'ttml',
   eslintSuffix: '(js)',
-  miniJsSuffix: 'js',
+  miniJsSuffix: '',
   globalObject: 'global',
   development: getPrjConfig({
     UglifyJs: false,
