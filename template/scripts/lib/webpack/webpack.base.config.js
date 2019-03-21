@@ -43,6 +43,18 @@ module.exports = {
         use: 'babel-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url-loader',
+      },
+      {
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        loader: 'url-loader',
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+      },
     ],
   },
   optimization: {
@@ -98,7 +110,7 @@ module.exports = {
     new CopyWebpackPlugin([
       {
         context: path.resolve(process.cwd(), 'src'),
-        from: '**/*.*(json|png|jpe?g|gif|svg|mp4|webm|ogg|mp3|wav|flac|aac|woff2?|eot|ttf|otf)',
+        from: '**/*.json',
         to: codePath,
       },
     ]),
