@@ -44,6 +44,16 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.json$/,
+        use: {
+          loader: 'mini-json-loader',
+          options: {
+            test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+          },
+        },
+        exclude: /node_modules/,
+      },
+      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: fileLoader(),
