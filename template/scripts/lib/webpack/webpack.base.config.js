@@ -97,7 +97,7 @@ module.exports = {
           name: 'commons/commons',
           chunks: 'all',
           minSize: 0,
-          minChunks: 1,
+          minChunks: 2,
         },
       },
     },
