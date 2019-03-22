@@ -3,6 +3,6 @@ const webpack = require('webpack'),
 
 module.exports = function() {
   return new webpack.DefinePlugin({
-    'process.env.outData': JSON.stringify(envData),
+    'process.env.outData': envData,
   });
 };
