@@ -19,7 +19,8 @@ const xmlLoader = require('./loaders/xmlLoader'),
   optimizeUglifyJs = require('./plugins/optimizeUglifyJs'),
   miniCssPlugin = require('./plugins/miniCssPlugin'),
   copyProjectConf = require('./plugins/copyProjectConfig'),
-  definePlugin = require('./plugins/definePlugin');
+  definePlugin = require('./plugins/definePlugin'),
+  sourceMapPlugin = require('./plugins/sourceMapPlugin');
 
 module.exports = {
   mode: process.env.NODE_ENV,
@@ -121,6 +122,7 @@ module.exports = {
     }),
     new MiniappAutoPlugin(),
     new StyleLintPlugin(),
+    ...sourceMapPlugin(conf.sourceMap),
     ...miniCssPlugin(conf.cssSuffix),
     new CopyWebpackPlugin([
       {
