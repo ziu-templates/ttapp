@@ -10,7 +10,7 @@
         "fix": "npm run lint -- --fix",
         "lint": "eslint --ext .js src -c .eslintrc.js",
         {{/lint}}
-        "fix:scss": "npm run lint:scss --fix",
+        "fix:scss": "npm run lint:scss -- --fix",
         "lint:scss": "stylelint src/**/*.scss --config .stylelintrc",
         {{#gitCommitMsg}}
         "husky": "node node_modules/husky/lib/installer/bin install",
