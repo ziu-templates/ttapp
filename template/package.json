@@ -17,9 +17,9 @@
         "unhusky": "node node_modules/husky/lib/installer/bin uninstall",
         {{/gitCommitMsg}}
         "dev": "node scripts/bin/dev.js",
-        "build": "node scripts/bin/prod.js",
-        "stg": "node scripts/bin/staging.js",
-        "testing": "node scripts/bin/testing.js"
+        "build": "node scripts/bin/ziuServer.js",
+        "stg": "npm run build -- staging",
+        "testing": "npm run build -- testing"
     },
     "devDependencies": {
         "@babel/core": "^7.3.4",
@@ -55,6 +55,7 @@
         "mini-json-loader": "^1.0.0",
         "mini-xml-loader": "^1.1.0",
         "miniapp-auto-webpack-plugin": "^1.1.3",
+        "minimist": "^1.2.0",
         "node-notifier": "^5.4.0",
         "optimize-css-assets-webpack-plugin": "^5.0.1",
         "merge": "^1.2.1",

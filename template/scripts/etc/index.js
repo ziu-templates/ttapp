@@ -33,4 +33,10 @@ module.exports = {
     codePath: path.resolve(process.cwd(), 'dist/staging'),
   }),
   production: getPrjConfig(),
+  envList: {
+    development: true,
+    testing: true,
+    staging: true,
+    production: true,
+  },
 };
