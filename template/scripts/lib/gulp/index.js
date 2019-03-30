@@ -15,7 +15,22 @@ module.exports = function({compiler, watchFn}) {
     }),
     hashVal = entryHash(entry);
   const jsonWatcher = gulp.watch('src/**/*.json');
-  jsonWatcher.on('change', function(event) {
+  jsonWatcher.on('change', reWatch);
+  jsonWatcher.on('add', reWatch);
+  const allWatcher = gulp.watch('src/**/*', {
+    events: ['add', 'unlink'],
+    ignore: RegExp(`\.(js|json|${conf.xmlSuffix}${conf.xmlSuffix ? `|${conf.miniJsSuffix}` : ''}|scss)`)
+  });
+  allWatcher.on('all', function() {
+    if (webpackWatcher) {
+      webpackWatcher.close(() => {
+        console.log('Entry File changed!');
+      });
+      webpackWatcher = watchFn();
+    }
+  });
+
+  function reWatch() {
     let curHashVal = entryHash(getEntry({
       xmlSuffix: conf.xmlSuffix,
       cssSuffix: conf.compileCssSuffix,
@@ -30,8 +45,7 @@ module.exports = function({compiler, watchFn}) {
       });
       webpackWatcher = watchFn();
     }
-    console.log(event);
-  });
+  }
   return {
     webpackWatcher,
     jsonWatcher

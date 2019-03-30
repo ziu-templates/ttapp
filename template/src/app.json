@@ -8,10 +8,9 @@
     "window":{
         "backgroundTextStyle":"light",
         "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "{{ name }}",
+        "navigationBarTitleText": "ttapp-demo",
         "navigationBarTextStyle":"black"
     },
-    {{#tab}}
     "tabBar": {
         "list": [
             {
@@ -28,6 +27,5 @@
             }
         ]
     },
-    {{/tab}}
     "debug": true
 }

@@ -11,28 +11,28 @@ App({
     console.log(msg, ' -----> onError');
   },
   pageOnLoad(pageLoadFn) {
-    let app = this;
+    const app = this;
     return {
       onLoad(opts) {
         pageLoadFn.apply(this, {
           ...opts,
-          app
+          app,
         });
-      }
+      },
     };
   },
   pageOnShow(pageShowFn) {
-    let app = this;
+    const app = this;
     return {
       onShow(opts) {
         pageShowFn.apply(this, {
           ...opts,
-          app
+          app,
         });
-      }
+      },
     };
   },
   globalData: {
-    initData: null
-  }
+    initData: null,
+  },
 });
