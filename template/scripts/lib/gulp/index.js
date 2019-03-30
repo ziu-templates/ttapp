@@ -17,6 +17,7 @@ module.exports = function({compiler, watchFn}) {
   let jsonWatcher = gulp.watch('src/**/*.json');
   jsonWatcher.on('change', reWatch);
   jsonWatcher.on('add', reWatch);
+  jsonWatcher.on('unlink', reWatch);
   let allWatcher = gulp.watch('src/**/*', {
     events: ['add', 'unlink'],
     ignored: RegExp(`\.(js|json|${conf.xmlSuffix}${conf.xmlSuffix ? `|${conf.miniJsSuffix}` : ''}|scss)`)
