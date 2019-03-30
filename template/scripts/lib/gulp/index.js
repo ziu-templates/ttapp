@@ -14,17 +14,17 @@ module.exports = function({compiler, watchFn}) {
       cssSuffix: conf.compileCssSuffix,
     }),
     hashVal = entryHash(entry);
-  const jsonWatcher = gulp.watch('src/**/*.json');
+  let jsonWatcher = gulp.watch('src/**/*.json');
   jsonWatcher.on('change', reWatch);
   jsonWatcher.on('add', reWatch);
-  const allWatcher = gulp.watch('src/**/*', {
+  let allWatcher = gulp.watch('src/**/*', {
     events: ['add', 'unlink'],
-    ignore: RegExp(`\.(js|json|${conf.xmlSuffix}${conf.xmlSuffix ? `|${conf.miniJsSuffix}` : ''}|scss)`)
+    ignored: RegExp(`\.(js|json|${conf.xmlSuffix}${conf.xmlSuffix ? `|${conf.miniJsSuffix}` : ''}|scss)`)
   });
   allWatcher.on('all', function() {
     if (webpackWatcher) {
       webpackWatcher.close(() => {
-        console.log('Entry File changed!');
+        console.log('Assets File changed!');
       });
       webpackWatcher = watchFn();
     }
@@ -48,6 +48,7 @@ module.exports = function({compiler, watchFn}) {
   }
   return {
     webpackWatcher,
-    jsonWatcher
+    jsonWatcher,
+    allWatcher
   };
 }

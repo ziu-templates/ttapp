@@ -4,20 +4,21 @@
 const rmFiles = require('./utils/rmFiles');
 
 module.exports = {
-  sigint(pathurl, {webpackWatcher, jsonWatcher}) {
+  sigint(pathurl, {webpackWatcher, jsonWatcher, allWatcher}) {
     process.on('SIGINT', () => {
       if (!webpackWatcher && !jsonWatcher) {
         return rmFiles(pathurl);
       }
       if (webpackWatcher) {
-        return webpackWatcher.close(() => {
+        webpackWatcher.close(() => {
           rmFiles(pathurl);
         });
       }
       if (jsonWatcher) {
-        return jsonWatcher.close(() => {
-          rmFiles(pathurl);
-        });
+        jsonWatcher.close();
+      }
+      if (allWatcher) {
+        allWatcher.close();
       }
     });
   },
