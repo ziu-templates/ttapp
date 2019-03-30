@@ -9,7 +9,10 @@ const cp = require('cp'),
   rmFiles = require('./utils/rmFiles');
 module.exports = {
   sigint(pathurl, {webpackWatcher, jsonWatcher, allWatcher}) {
-    process.on('SIGINT', () => {
+    process.on('SIGINT', kill);
+    process.on('SIGHUP', kill);
+
+    function kill() {
       const prjConfig = path.join(codePath, 'project.config.json');
       if (exists(prjConfig)) {
         cp.sync(prjConfig, 'src/project.config.json');
@@ -28,6 +31,6 @@ module.exports = {
       if (allWatcher) {
         allWatcher.close();
       }
-    });
+    }
   },
 };
