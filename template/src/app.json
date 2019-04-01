@@ -8,7 +8,7 @@
     "window":{
         "backgroundTextStyle":"light",
         "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "ttapp-demo",
+        "navigationBarTitleText": "{{ name }}",
         "navigationBarTextStyle":"black"
     },
     "tabBar": {
