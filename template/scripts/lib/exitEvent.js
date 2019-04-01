@@ -8,28 +8,32 @@ const cp = require('cp'),
   codePath = conf[process.env.PRJ_ENV].codePath,
   rmFiles = require('./utils/rmFiles');
 module.exports = {
-  sigint(pathurl, {webpackWatcher, jsonWatcher, allWatcher}) {
+  sigint(pathurl) {
+    const scope = this;
     process.on('SIGINT', kill);
-    process.on('SIGHUP', kill);
+    // process.on('SIGHUP', kill);
 
     function kill() {
       const prjConfig = path.join(codePath, 'project.config.json');
       if (exists(prjConfig)) {
         cp.sync(prjConfig, 'src/project.config.json');
       }
-      if (!webpackWatcher && !jsonWatcher) {
+      if (!scope.webpackWatcher && !scope.jsonWatcher) {
         return rmFiles(pathurl);
       }
-      if (webpackWatcher) {
-        webpackWatcher.close(() => {
+      if (scope.webpackWatcher) {
+        scope.webpackWatcher.close(() => {
           rmFiles(pathurl);
         });
+        scope.webpackWatcher = null;
       }
-      if (jsonWatcher) {
-        jsonWatcher.close();
+      if (scope.jsonWatcher) {
+        scope.jsonWatcher.close();
+        scope.jsonWatcher = null;
       }
-      if (allWatcher) {
-        allWatcher.close();
+      if (scope.allWatcher) {
+        scope.allWatcher.close();
+        scope.allWatcher = null;
       }
     }
   },

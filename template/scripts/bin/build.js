@@ -9,14 +9,21 @@ const builder = require('../lib/build'),
   defaultPathurl = `${conf[process.env.PRJ_ENV].codePath}/**/*`,
   rmFiles = require('../lib/utils/rmFiles');
 
+let scope = {
+  webpackWatcher: null,
+  jsonWatcher: null,
+  allWatcher: null,
+};
+
 module.exports = function(pathurl = defaultPathurl) {
   rmFiles(pathurl, () => {
     if (process.env.NODE_ENV === 'development') {
       // return exitEvent.sigint(pathurl, builder.watch());
-      return exitEvent.sigint(pathurl, gulpBuilder({
+      gulpBuilder.call(scope, {
         isWatch: true,
         watchFn: builder.watch
-      }));
+      });
+      return exitEvent.sigint.call(scope, pathurl);
     }
     return builder.runCompile(() => {
       console.log('build successed!');

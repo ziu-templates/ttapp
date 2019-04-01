@@ -56,7 +56,7 @@
         "mini-json-loader": "^1.0.0",
         "mini-xml-loader": "^1.1.0",
         "gulp": "^4.0.0",
-        "miniapp-auto-webpack-plugin": "^1.2.0",
+        "miniapp-auto-webpack-plugin": "^1.2.1",
         "minimist": "^1.2.0",
         "node-notifier": "^5.4.0",
         "optimize-css-assets-webpack-plugin": "^5.0.1",
@@ -69,7 +69,7 @@
         "commitlint": "^7.5.2",
         {{/gitCommitMsg}}
         "stylelint": "^9.10.1",
-        "stylelint-config-ziu": "^1.0.3",
+        "stylelint-config-ziu": "^1.0.4",
         "stylelint-webpack-plugin": "^0.10.5",
         "terser-webpack-plugin": "^1.2.3",
         "url-loader": "^1.1.2",
