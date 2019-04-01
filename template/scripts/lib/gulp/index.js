@@ -27,7 +27,7 @@ module.exports = function({compiler, watchFn}) {
   let hasRunTimer = false,
     preLen = 0,
     curLen = 0;
-  scope.allWatcher.on('add', function() {
+  scope.allWatcher.on('all', function() {
     ++curLen;
     if (!hasRunTimer) {
       hasRunTimer = true;
