@@ -1,5 +1,9 @@
 const gulp = require('gulp'),
+  cp = require('cp'),
+  exists = require('fs').existsSync,
+  path = require('path'),
   conf = require('../../etc'),
+  codePath = conf[process.env.PRJ_ENV].codePath,
   entryHash = require('../utils/entryHash'),
   {getEntry} = require('miniapp-auto-webpack-plugin');
 
@@ -40,6 +44,7 @@ module.exports = function({compiler, watchFn}) {
       if (curLen === preLen) {
         hasRunTimer = false;
         if (scope.webpackWatcher) {
+          cpProjectConfig();
           scope.webpackWatcher.close(() => {
             console.log('Assets File changed!');
             setTimeout(() => {
@@ -66,11 +71,19 @@ module.exports = function({compiler, watchFn}) {
     }
     hashVal = curHashVal;
     if (scope.webpackWatcher) {
+      cpProjectConfig();
       scope.webpackWatcher.close(() => {
         console.log('Entry File changed!');
         scope.webpackWatcher = watchFn();
       });
       scope.webpackWatcher = null;
+    }
+  }
+
+  function cpProjectConfig() {
+    const prjConfig = path.join(codePath, 'project.config.json');
+    if (exists(prjConfig)) {
+      cp.sync(prjConfig, 'src/project.config.json');
     }
   }
 }
