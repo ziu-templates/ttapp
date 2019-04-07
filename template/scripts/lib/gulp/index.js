@@ -25,7 +25,7 @@ module.exports = function({compiler, watchFn}) {
   scope.jsonWatcher.on('unlink', reWatch);
   scope.allWatcher = gulp.watch('src/**/*', {
     events: ['add', 'addDir', 'unlinkDir', 'unlink'],
-    ignored: new RegExp(`\.(js|json|${conf.xmlSuffix}${conf.miniJsSuffix ? `|${conf.miniJsSuffix}` : ''}|scss)$`)
+    ignored: new RegExp(`\.(js|json|${conf.xmlSuffix}${conf.miniJsSuffix ? `|${conf.miniJsSuffix}` : ''}|${conf.compileCssSuffix})$`)
   });
 
   let hasRunTimer = false,
