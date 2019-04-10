@@ -8,7 +8,7 @@ module.exports = function(suffix) {
       loader: 'mini-xml-loader',
       options: {
         filename: `[name].${suffix}`,
-        minimize: envComp('producion'),
+        minimize: envComp('production'),
       },
     }],
   }] : [];

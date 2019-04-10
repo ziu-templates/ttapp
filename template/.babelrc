@@ -1,6 +1,5 @@
 {
   "presets": [
-    "minify",
     [
       "@babel/preset-env",
       {
@@ -12,13 +11,28 @@
     ]
   ],
   "plugins": [
+    "transform-undefined-to-void-fn",
     [
       "@babel/plugin-transform-runtime",
       {
-        "helpers": false,
+        "helpers": true,
         "regenerator": true
       }
     ]
   ],
-  "comments": false
+  "comments": false,
+  "env": {
+    "production": {
+      "presets": [
+        [
+          "minify",
+          {
+            "builtIns": false,
+            "evaluate": false,
+            "mangle": false
+          }
+        ]
+      ]
+    }
+  }
 }

@@ -75,9 +75,9 @@ module.exports = function() {
       ],
     },
     optimization: {
-      minimize: envComp('producion'),
+      minimize: envComp('production'),
       minimizer: [
-        ...optimizeCss(),
+        ...optimizeCss(conf.cssSuffix),
         ...optimizeUglifyJs(),
       ],
       splitChunks: {
