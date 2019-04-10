@@ -60,6 +60,7 @@ module.exports = {
     // }
   },
   filters: {
+    'src/assets/imgs/tab.png': 'tab',
     'scripts/.eslintrc.js': 'lint',
     'scripts/.eslintignore': 'lint',
     'commitlint.config.js': 'gitCommitMsg',
