@@ -122,7 +122,10 @@ module.exports = function() {
           });
         },
       }),
-      new MiniappAutoPlugin(),
+      new MiniappAutoPlugin({
+        xmlSuffix: conf.xmlSuffix,
+        cssSuffix: conf.cssSuffix,
+      }),
       new StyleLintPlugin(),
       ...sourceMapPlugin(conf.sourceMap),
       ...miniCssPlugin(conf.cssSuffix),
