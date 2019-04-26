@@ -25,7 +25,8 @@ const xmlLoader = require('./loaders/xmlLoader'),
 module.exports = function() {
   let {entry, entryJsonFiles} = getEntry({
     xmlSuffix: conf.xmlSuffix,
-    cssSuffix: conf.compileCssSuffix,
+    cssSuffix: conf.cssSuffix,
+    compileCssSuffix: conf.compileCssSuffix,
   });
   return {
     mode: process.env.NODE_ENV,
@@ -41,11 +42,11 @@ module.exports = function() {
         ...eslintLoader(conf.eslintSuffix),
         ...xmlLoader(conf.xmlSuffix),
         ...miniJsLoader(conf.miniJsSuffix),
-        scssLoader(),
+        scssLoader(conf.cssSuffix),
         {
           test: /\.js$/,
           use: 'babel-loader',
-          exclude: /node_modules/,
+          exclude: /(node_modules|vs-button)/,
         },
         {
           test: /\.json$/,
@@ -122,10 +123,7 @@ module.exports = function() {
           });
         },
       }),
-      new MiniappAutoPlugin({
-        xmlSuffix: conf.xmlSuffix,
-        cssSuffix: conf.cssSuffix,
-      }),
+      new MiniappAutoPlugin(),
       new StyleLintPlugin(),
       ...sourceMapPlugin(conf.sourceMap),
       ...miniCssPlugin(conf.cssSuffix),

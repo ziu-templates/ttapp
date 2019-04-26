@@ -16,7 +16,8 @@ module.exports = function({compiler, watchFn}) {
   scope.webpackWatcher = watchFn();
   let {entry} = getEntry({
       xmlSuffix: conf.xmlSuffix,
-      cssSuffix: conf.compileCssSuffix,
+      cssSuffix: conf.cssSuffix,
+      compileCssSuffix: conf.compileCssSuffix,
     }),
     hashVal = entryHash(entry);
   scope.jsonWatcher = gulp.watch('src/**/*.json');

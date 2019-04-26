@@ -1,8 +1,8 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-module.exports = function() {
+module.exports = function(cssSuffix = 'css') {
   return {
-    test: /\.(scss|sass)$/,
+    test: new RegExp(`\.(scss|sass|${cssSuffix})$`),
     use: [
       {
         loader: MiniCssExtractPlugin.loader,
