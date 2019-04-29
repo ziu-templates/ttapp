@@ -9,8 +9,15 @@ const webpack = require('webpack'),
 /**
  * [compiler 初始化webpack配置]
  */
-let compiler = null;
+let compiler = null,
+  spinner = null;
 
+process.on('SIGINT', () => {
+  if (spinner && typeof spinner.stop === 'function') {
+    spinner.stop();
+    console.log('终止批处理操作吗(Y/N)? ');
+  }
+});
 module.exports = {
   compiler,
   /**
@@ -18,11 +25,12 @@ module.exports = {
    */
   runCompile(cb = () => {
   }) {
-    const spinner = ora('Compiling Start....').start();
+    spinner = ora('Compiling Start....').start();
     spinner.color = 'yellow';
     compiler = webpack(baseConfig());
     compiler.run((err) => {
       spinner.stop();
+      spinner = null;
       if (err) {
         throw err;
       }
@@ -34,7 +42,7 @@ module.exports = {
    * [监听改变]
    */
   watch() {
-    const spinner = ora('Watching Compile Start....').start();
+    spinner = ora('Watching Compile Start....').start();
     spinner.color = 'yellow';
     compiler = webpack(baseConfig());
     return compiler.watch({
@@ -42,6 +50,7 @@ module.exports = {
       poll: 1000
     }, (err, stats) => {
       spinner.stop();
+      spinner = null;
       if (err) {
         throw err;
       }
