@@ -29,8 +29,10 @@ module.exports = {
     spinner.color = 'yellow';
     compiler = webpack(baseConfig());
     compiler.run((err) => {
-      spinner.stop();
-      spinner = null;
+      if (spinner && typeof spinner.stop === 'function') {
+        spinner.stop();
+        spinner = null;
+      }
       if (err) {
         throw err;
       }
@@ -49,8 +51,10 @@ module.exports = {
       aggregateTimeout: 300,
       poll: 1000
     }, (err, stats) => {
-      spinner.stop();
-      spinner = null;
+      if (spinner && typeof spinner.stop === 'function') {
+        spinner.stop();
+        spinner = null;
+      }
       if (err) {
         throw err;
       }
