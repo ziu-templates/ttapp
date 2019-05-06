@@ -61,8 +61,10 @@ module.exports = {
   },
   filters: {
     'src/assets/imgs/tab.png': 'tab',
-    'scripts/.eslintrc.js': 'lint',
-    'scripts/.eslintignore': 'lint',
+    '.eslintrc.js': 'lint',
+    '.eslintignore': 'lint',
+    'scripts/lib/webpack/loaders/eslintLoader.js': 'lint',
     'commitlint.config.js': 'gitCommitMsg',
+    '.huskyrc': 'gitCommitMsg',
   }
 };

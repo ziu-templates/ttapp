@@ -12,7 +12,9 @@ const path = require('path'),
 const xmlLoader = require('./loaders/xmlLoader'),
   miniJsLoader = require('./loaders/miniJsLoader'),
   scssLoader = require('./loaders/scssLoader'),
+  {{#lint}}
   eslintLoader = require('./loaders/eslintLoader'),
+  {{/lint}}
   fileLoader = require('./loaders/fileLoader'),
   optimizeCss = require('./plugins/optimizeCss'),
   optimizeUglifyJs = require('./plugins/optimizeUglifyJs'),
@@ -39,7 +41,9 @@ module.exports = function() {
     devtool: false,
     module: {
       rules: [
+        {{#lint}}
         ...eslintLoader(conf.eslintSuffix),
+        {{/lint}}
         ...xmlLoader(conf.xmlSuffix),
         ...miniJsLoader(conf.miniJsSuffix),
         scssLoader(conf.cssSuffix),
