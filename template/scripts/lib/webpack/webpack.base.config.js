@@ -85,6 +85,10 @@ module.exports = function() {
         ...optimizeCss(conf.cssSuffix),
         ...optimizeUglifyJs(),
       ],
+      noEmitOnErrors: true,
+      runtimeChunk: {
+        name: 'commons/runtime'
+      },
       splitChunks: {
         cacheGroups: {
           vendor: {
