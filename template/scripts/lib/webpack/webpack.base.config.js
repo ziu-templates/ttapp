@@ -50,7 +50,7 @@ module.exports = function() {
         {
           test: /\.js$/,
           use: 'babel-loader',
-          exclude: /(node_modules|vs-button)/,
+          exclude: /(node_modules)/,
         },
         {
           test: /\.json$/,
