@@ -19,7 +19,8 @@
         "dev": "node scripts/bin/dev.js",
         "build": "node scripts/bin/ziuServer.js",
         "stg": "npm run build -- staging",
-        "testing": "npm run build -- testing"
+        "testing": "npm run build -- testing",
+        "report": "npm run build -- production -r"
     },
     "devDependencies": {
         "@babel/core": "^7.3.4",
@@ -75,7 +76,8 @@
         "stylelint-webpack-plugin": "^0.10.5",
         "terser-webpack-plugin": "^1.2.3",
         "url-loader": "^1.1.2",
-        "webpack": "^4.29.6"
+        "webpack": "^4.29.6",
+        "webpack-bundle-analyzer": "^3.3.2"
     },
     "engines": {
         "node": ">= 8.0.0",

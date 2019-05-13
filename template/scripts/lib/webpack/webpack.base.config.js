@@ -2,6 +2,7 @@ const path = require('path'),
   {getEntry, MiniappAutoPlugin} = require('miniapp-auto-webpack-plugin'),
   FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin'),
   StyleLintPlugin  = require('stylelint-webpack-plugin'),
+  BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
   notifier = require('node-notifier'),
   ICON = path.join(process.cwd(), 'scripts/logo.png'),
   ENV = process.env.PRJ_ENV,
@@ -30,7 +31,7 @@ module.exports = function() {
     cssSuffix: conf.cssSuffix,
     compileCssSuffix: conf.compileCssSuffix,
   });
-  return {
+  const webpackBaseConfig = {
     mode: process.env.NODE_ENV,
     entry,
     output: {
@@ -139,4 +140,8 @@ module.exports = function() {
       ...copyProjectConf
     ],
   };
+  if (process.env.bundleAnalyzerReport) {
+    webpackBaseConfig.plugins.push(new BundleAnalyzerPlugin());
+  }
+  return webpackBaseConfig;
 };
