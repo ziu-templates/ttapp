@@ -1,7 +1,8 @@
 const { envComp } = require('../../utils');
 
 module.exports = function(suffix) {
-  const reg = new RegExp(`\\.${suffix}$`);
+  const reg = new RegExp(`\\.${suffix}$`),
+    undefinedToVoid = false;
   return suffix ? [{
     test: reg,
     use: [
@@ -10,6 +11,7 @@ module.exports = function(suffix) {
         options: {
           filename: `[name].${suffix}`,
           minimize: envComp('production'),
+          undefinedToVoid,
         },
       },
       {
@@ -22,6 +24,7 @@ module.exports = function(suffix) {
                 builtIns: envComp('production'),
                 evaluate: envComp('production'),
                 mangle: envComp('production'),
+                undefinedToVoid,
               }
             ],
             [
@@ -31,7 +34,9 @@ module.exports = function(suffix) {
               },
             ]
           ],
-          plugins: ['transform-undefined-to-void-fn']
+          ...(undefinedToVoid ? {
+            plugins: ['transform-undefined-to-void-fn']
+          } : {}),
         },
       },
     ],
