@@ -92,6 +92,13 @@ module.exports = function() {
       },
       splitChunks: {
         cacheGroups: {
+          style: {
+            test: new RegExp(`\.${conf.compileCssSuffix}$`),
+              name: 'commons/style',
+              chunks: 'all',
+              minSize: 0,
+              minChunks: 2,
+          },
           vendor: {
             test: /[\\/]node_modules[\\/]/,
             name: 'commons/vendor',
