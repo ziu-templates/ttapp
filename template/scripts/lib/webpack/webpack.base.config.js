@@ -139,7 +139,10 @@ module.exports = function() {
           });
         },
       }),
-      new MiniappAutoPlugin(),
+      new MiniappAutoPlugin({
+        cssSuffix: conf.cssSuffix,
+        xmlSuffix: conf.xmlSuffix,
+      }),
       new StyleLintPlugin(),
       ...sourceMapPlugin(conf.sourceMap),
       ...miniCssPlugin(conf.cssSuffix),
