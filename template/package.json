@@ -84,9 +84,11 @@
         "npm": ">= 3.0.0"
     },
     "browserslist": [
-        "> 1%",
+        "> 0.25%, not dead",
         "last 2 versions",
-        "not ie <= 8"
+        "not ie <= 8",
+        "iOS > 9",
+        "android > 4.0"
     ],
     "dependencies": {
         "@babel/runtime": "^7.3.4"
