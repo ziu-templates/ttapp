@@ -5,7 +5,8 @@ const cp = require('cp'),
   conf = require('../etc'),
   exists = require('fs').existsSync,
   path = require('path'),
-  codePath = conf[process.env.PRJ_ENV].codePath,
+  confEnvData = conf[process.env.PRJ_ENV],
+  codePath = confEnvData.codePath,
   rmFiles = require('./utils/rmFiles');
 module.exports = {
   sigint(pathurl) {
@@ -14,9 +15,9 @@ module.exports = {
     // process.on('SIGHUP', kill);
 
     function kill() {
-      const prjConfig = path.join(codePath, 'project.config.json');
+      const prjConfig = path.join(codePath, confEnvData.pkgConfigName);
       if (exists(prjConfig)) {
-        cp.sync(prjConfig, 'src/project.config.json');
+        cp.sync(prjConfig, `src/${confEnvData.pkgConfigName}`);
       }
       if (!scope.webpackWatcher && !scope.jsonWatcher) {
         return rmFiles(pathurl);
