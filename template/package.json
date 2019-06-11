@@ -21,7 +21,7 @@
         "stg": "npm run build -- staging",
         "testing": "npm run build -- testing",
         "report": "npm run build -- production -r",
-        "zm": "ziu commit",
+        "commit": "ziu commit",
         "img": "npm run ziu-img -- src",
         "ziu-img": "ziu img",
         "cl": "ziu cl -p angular -i CHANGELOG.md -s -r 1000 && git add CHANGELOG.md package.json"
