@@ -6,7 +6,7 @@ module.exports = function(suffix) {
     assetNameRegExp: new RegExp(`\.${suffix}$`, 'g'),
     cssProcessor: require('cssnano'),
     cssProcessorPluginOptions: {
-      preset: ['default', { discardComments: { removeAll: true } }],
+      preset: ['miniapp', { discardComments: { removeAll: true } }],
     },
     canPrint: true
   })];
