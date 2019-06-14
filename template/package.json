@@ -24,7 +24,7 @@
         "commit": "ziu commit",
         "img": "npm run ziu-img -- src",
         "ziu-img": "ziu img",
-        "cl": "ziu cl -p angular -i CHANGELOG.md -s -r 1000 && git add CHANGELOG.md package.json"
+        "postversion": "ziu cl -p angular -i CHANGELOG.md -s -r 1000 && git add CHANGELOG.md package.json"
     },
     "devDependencies": {
         "@babel/core": "^7.3.4",
