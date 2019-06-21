@@ -33,31 +33,31 @@ module.exports = {
       type: 'list',
       message: 'Pick an ESLint preset',
       choices: [
-        // {
-        //     name: 'Standard (https://github.com/standard/standard)',
-        //     value: 'standard',
-        //     short: 'Standard',
-        // },
         {
           name: 'Airbnb (https://github.com/airbnb/javascript)',
           value: 'airbnb',
           short: 'Airbnb',
         },
-        // {
-        //     name: 'none (configure it yourself)',
-        //     value: 'none',
-        //     short: 'none',
-        // },
       ],
     },
     gitCommitMsg: {
       type: 'confirm',
       message: 'Use commitlint to check commit message?(Angular Commit Message)',
     },
-    // sass: {
-    //     type: 'confirm',
-    //     message: 'Use sass?'
-    // }
+    performance: {
+      type: 'confirm',
+      message: 'Use Picture Compression/CHANGELOG to your project?',
+    },
+    img: {
+      when: 'performance',
+      type: 'confirm',
+      message: 'Use Picture Compression?',
+    },
+    changelog: {
+      when: 'performance',
+      type: 'confirm',
+      message: 'Use CHANGELOG?',
+    },
   },
   filters: {
     'src/assets/imgs/tab.png': 'tab',

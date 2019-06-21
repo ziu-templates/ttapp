@@ -1,33 +1,34 @@
 const path = require('path'),
-  isExists = require('fs').existsSync,
-  dotenv = require('dotenv'),
-  merge = require('merge'),
-  defaultEnvPath = path.resolve(process.cwd(), '.env'),
-  runtimeEnvPath = path.resolve(process.cwd(), `.env.${process.env.PRJ_ENV}`);
+  fs = require('fs'),
+  glob = require('glob'),
+  YAML = require('yaml'),
+  merge = require('lodash/merge');
 
-let defaultEnv = {
-    PRJ_ENV: process.env.PRJ_ENV
+const envCwd = path.join(process.cwd(), 'config'),
+  globConfig = {
+    cwd: envCwd,
+    root: '/',
   },
-  runtimeEnv = {};
+  PRJ_ENV = process.env.PRJ_ENV || process.env.NODE_ENV || 'production',
+  defaultEnvPath = glob.sync('default.*(yaml|yml)', globConfig)[0] || '';
 
-if (isExists(defaultEnvPath)) {
-  defaultEnv = dotenv.config({
-    path: defaultEnvPath
-  }).parsed || {};
+
+if (!defaultEnvPath) {
+  throw new Error(`config dir must include default.yml or default.yaml`);
 }
 
-if (isExists(runtimeEnvPath)) {
-  runtimeEnv = dotenv.config({
-    path: runtimeEnvPath
-  }).parsed || {};
+const defaultEnv = getEnvData(defaultEnvPath, envCwd),
+  envFile = glob.sync(`${PRJ_ENV}.*(yaml|yml)`, globConfig)[0] || '',
+  env = getEnvData(envFile, envCwd),
+  envMergeData = merge({
+    PRJ_ENV,
+  }, defaultEnv, env);
+
+function getEnvData(url = '', envCwd = process.cwd()) {
+  if (!url) {
+    return {};
+  }
+  return YAML.parse(fs.readFileSync(path.join(envCwd, url || ''), 'utf8'));
 }
 
-let env = merge({
-    PRJ_ENV: process.env.PRJ_ENV
-  }, defaultEnv, runtimeEnv),
-  injectionEnv = {};
-
-Object.keys(env).forEach((key) => {
-  injectionEnv[key] = JSON.stringify(env[key]);
-});
-module.exports = injectionEnv;
+module.exports = JSON.stringify(envMergeData);

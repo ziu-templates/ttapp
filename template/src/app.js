@@ -1,7 +1,7 @@
 /**
  * 全局
  */
-console.log(process.env.outData);
+console.log(process.env.ENV_DATA);
 App({
   onLaunch() {
   },

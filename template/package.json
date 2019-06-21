@@ -16,15 +16,20 @@
         "husky": "node node_modules/husky/lib/installer/bin install",
         "unhusky": "node node_modules/husky/lib/installer/bin uninstall",
         {{/gitCommitMsg}}
+        {{#performance}}
+        "commit": "ziu commit",
+        {{/performance}}
+        {{#img}}
+        "img": "ziu img src",
+        {{/img}}
+        {{#changelog}}
+        "postversion": "ziu cl -p angular -i CHANGELOG.md -s -r 1000 && git add CHANGELOG.md package.json",
+        {{/changelog}}
         "dev": "node scripts/bin/dev.js",
         "build": "node scripts/bin/ziuServer.js",
-        "stg": "npm run build -- staging",
+        "staging": "npm run build -- staging",
         "testing": "npm run build -- testing",
-        "report": "npm run build -- production -r",
-        "commit": "ziu commit",
-        "img": "npm run ziu-img -- src",
-        "ziu-img": "ziu img",
-        "postversion": "ziu cl -p angular -i CHANGELOG.md -s -r 1000 && git add CHANGELOG.md package.json"
+        "report": "npm run build -- production -r"
     },
     "devDependencies": {
         "@babel/core": "^7.3.4",
@@ -38,7 +43,6 @@
         "css-loader": "^2.1.1",
         "cssnano": "^4.1.10",
         "cssnano-preset-miniapp": "^1.0.5",
-        "dotenv": "^7.0.0",
         {{#lint}}
         "eslint": "^5.15.3",
         "eslint-friendly-formatter": "^4.0.1",
@@ -63,12 +67,13 @@
         "mini-js-loader": "^1.0.6",
         "mini-json-loader": "^1.0.0",
         "mini-xml-loader": "^1.2.0",
+        "glob": "^7.1.4",
         "gulp": "^4.0.0",
+        "lodash": "^4.17.11",
         "miniapp-auto-webpack-plugin": "^1.4.0",
         "minimist": "^1.2.0",
         "node-notifier": "^5.4.0",
         "optimize-css-assets-webpack-plugin": "^5.0.1",
-        "merge": "^1.2.1",
         "node-sass": "^4.11.0",
         "ora": "^1.4.0",
         "sass-loader": "^7.1.0",
@@ -81,9 +86,12 @@
         "stylelint-webpack-plugin": "^0.10.5",
         "terser-webpack-plugin": "^1.2.3",
         "url-loader": "^1.1.2",
+        {{#performance}}
+        "ziu": "^1.5.0",
+        {{/performance}}
         "webpack": "^4.29.6",
-        "webpack-bundle-analyzer": "^3.3.2",
-        "ziu": "^1.5.0"
+        "yaml": "^1.6.0",
+        "webpack-bundle-analyzer": "^3.3.2"
     },
     "engines": {
         "node": ">= 8.0.0",

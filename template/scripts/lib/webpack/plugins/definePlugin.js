@@ -4,5 +4,6 @@ const webpack = require('webpack'),
 module.exports = function() {
   return new webpack.DefinePlugin({
     'process.env.outData': envData,
+    'process.env.ENV_DATA': envData,
   });
 };
