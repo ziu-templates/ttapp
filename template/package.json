@@ -67,7 +67,7 @@
         "mini-css-extract-plugin": "^0.5.0",
         "mini-js-loader": "^1.0.6",
         "mini-json-loader": "^1.0.0",
-        "mini-xml-loader": "^1.2.0",
+        "mini-xml-loader": "^1.2.1",
         "merge": "^1.2.1",
         "glob": "^7.1.4",
         "gulp": "^4.0.0",
