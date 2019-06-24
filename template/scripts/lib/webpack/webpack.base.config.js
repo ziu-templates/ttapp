@@ -40,6 +40,9 @@ module.exports = function() {
       globalObject: conf.globalObject || 'global',
     },
     devtool: false,
+    resolve: {
+      extensions: [`.${conf.miniJsSuffix}`, `.${conf.xmlSuffix}`, '.js', '.json'],
+    },
     module: {
       rules: [
         {{#lint}}
