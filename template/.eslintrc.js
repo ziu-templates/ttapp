@@ -13,6 +13,7 @@ module.exports = {
   extends: ['airbnb', 'ziu'],
   // add your custom rules here
   rules: {
+    'prefer-promise-reject-errors': 0,
     'linebreak-style': 0,
     'no-use-before-define': 0,
     // not require constant expressions in conditions
