@@ -92,7 +92,7 @@
         "terser-webpack-plugin": "^1.2.3",
         "url-loader": "^1.1.2",
         {{#performance}}
-        "ziu": "^1.5.0",
+        "ziu": "^1.6.1",
         {{/performance}}
         "webpack": "^4.29.6",
         "yaml": "^1.6.0",
@@ -111,6 +111,6 @@
     "dependencies": {
         "@babel/runtime": "^7.3.4",
         "@babel/runtime-corejs2": "^7.5.0",
-        "miniapp-utils": "^1.0.1"
+        "miniapp-utils": "^1.0.2"
     }
 }
