@@ -102,12 +102,6 @@
         "node": ">= 8.0.0",
         "npm": ">= 3.0.0"
     },
-    "browserslist": [
-        "> 0.25%, not dead",
-        "not ie <= 8",
-        "iOS >= 8",
-        "android >= 4.0"
-    ],
     "dependencies": {
         "@babel/runtime": "^7.3.4",
         "@babel/runtime-corejs2": "^7.5.0",
