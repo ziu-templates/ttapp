@@ -3,7 +3,6 @@
  */
 
 const ENV = process.env.PRJ_ENV,
-  {envComp} = require('../../utils'),
   CopyWebpackPlugin = require('copy-webpack-plugin'),
   conf = require('../../../etc'),
   rePkgConfig = require('../../utils/rePkgConfig');
@@ -14,7 +13,7 @@ module.exports = [new CopyWebpackPlugin([
     from: `src/${conf[ENV].pkgConfigName}`,
     to: conf[ENV].codePath,
     transform(content) {
-      return envComp('development') ? content : rePkgConfig(content.toString());
+      return rePkgConfig(content.toString());
     }
   }
 ])];
