@@ -97,16 +97,18 @@ module.exports = function() {
         cacheGroups: {
           style: {
             test: new RegExp(`\.${conf.compileCssSuffix}$`),
-              name: 'commons/style',
-              chunks: 'all',
-              minSize: 0,
-              minChunks: 2,
+            name: 'commons/style',
+            chunks: 'all',
+            minSize: 0,
+            maxSize: 300 * 1000,
+            minChunks: 2,
           },
           vendor: {
             test: /[\\/]node_modules[\\/]/,
             name: 'commons/vendor',
             chunks: 'initial',
             minSize: 0,
+            maxSize: 300 * 1000,
             minChunks: 1,
           },
           commons: {
@@ -121,6 +123,7 @@ module.exports = function() {
             name: 'commons/commons',
             chunks: 'all',
             minSize: 0,
+            maxSize: 300 * 1000,
             minChunks: 2,
           },
         },
