@@ -23,7 +23,8 @@
         "img": "ziu img src",
         {{/img}}
         {{#changelog}}
-        "postversion": "ziu cl -p angular -i CHANGELOG.md -s -r 1000 && git add CHANGELOG.md package.json",
+        "cl": "ziu cl -p angular -i CHANGELOG.md -s -r 1000",
+        "postversion": "ziu cl -p angular -i CHANGELOG.md -s -r 2 && git add CHANGELOG.md package.json && git add -u",
         {{/changelog}}
         "dev": "node scripts/bin/dev.js",
         "build": "node scripts/bin/ziuServer.js",
