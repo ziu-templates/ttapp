@@ -41,6 +41,8 @@ module.exports = function() {
     },
     devtool: false,
     resolve: {
+      mainFields: ['module', 'main'],
+      aliasFields: ['module', 'main'],
       extensions: [`.${conf.miniJsSuffix}`, `.${conf.xmlSuffix}`, '.js', '.json'],
     },
     module: {
