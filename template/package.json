@@ -106,6 +106,6 @@
     "dependencies": {
         "@babel/runtime": "^7.3.4",
         "@babel/runtime-corejs2": "^7.5.0",
-        "miniapp-utils": "^1.0.3"
+        "miniapp-utils": "^1.1.1"
     }
 }
