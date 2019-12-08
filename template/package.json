@@ -76,7 +76,7 @@
         "glob": "^7.1.4",
         "gulp": "^4.0.0",
         "lodash": "^4.17.11",
-        "miniapp-auto-webpack-plugin": "^1.6.9",
+        "miniapp-auto-webpack-plugin": "^1.6.10",
         "minimist": "^1.2.0",
         "node-notifier": "^5.4.0",
         "optimize-css-assets-webpack-plugin": "^5.0.1",
@@ -106,6 +106,6 @@
     "dependencies": {
         "@babel/runtime": "^7.3.4",
         "@babel/runtime-corejs2": "^7.5.0",
-        "miniapp-utils": "^1.1.1"
+        "miniapp-utils": "^1.1.5"
     }
 }
