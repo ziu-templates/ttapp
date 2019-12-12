@@ -2,6 +2,7 @@
 .editorconfig
 .idea
 .bat
+.scannerwork
 node_modules/
 getready/
 resource/
