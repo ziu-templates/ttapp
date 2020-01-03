@@ -17,14 +17,11 @@
         "unhusky": "node node_modules/husky/lib/installer/bin uninstall",
         {{/gitCommitMsg}}
         {{#performance}}
-        "commit": "ziu commit",
+        "commit": "git-cz",
         {{/performance}}
-        {{#img}}
-        "img": "ziu img src",
-        {{/img}}
         {{#changelog}}
-        "cl": "ziu cl -p angular -i CHANGELOG.md -s -r 1000",
-        "postversion": "ziu cl -p angular -i CHANGELOG.md -s -r 2 && git add CHANGELOG.md package.json && git add -u",
+        "cl": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1000",
+        "postversion": "conventional-changelog -p angular -i CHANGELOG.md -s -r 2 && git add CHANGELOG.md package.json && git add -u",
         {{/changelog}}
         "dev": "node scripts/bin/dev.js",
         "build": "node scripts/bin/ziuServer.js",
@@ -76,7 +73,8 @@
         "glob": "^7.1.4",
         "gulp": "^4.0.0",
         "lodash": "^4.17.11",
-        "miniapp-auto-webpack-plugin": "^1.6.10",
+        "miniapp-auto-webpack-plugin": "^2.0.3",
+        "mini-function-plugin": "^1.0.4",
         "minimist": "^1.2.0",
         "node-notifier": "^5.4.0",
         "optimize-css-assets-webpack-plugin": "^5.0.1",
@@ -93,7 +91,8 @@
         "terser-webpack-plugin": "^1.2.3",
         "url-loader": "^1.1.2",
         {{#performance}}
-        "ziu": "^1.6.4",
+        "conventional-changelog-cli": "^2.0.31",
+        "git-cz": "^3.3.0",
         {{/performance}}
         "webpack": "^4.29.6",
         "yaml": "^1.6.0",
