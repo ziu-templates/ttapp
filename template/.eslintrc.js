@@ -16,6 +16,16 @@ module.exports = {
     'prefer-promise-reject-errors': 0,
     'linebreak-style': 0,
     'no-use-before-define': 0,
+    "operator-linebreak": [
+      2,
+      "after",
+      {
+        overrides: {
+          "?": "before",
+          ":": "before",
+        },
+      },
+    ],
     // not require constant expressions in conditions
     'no-constant-condition': 0,
     // not require === and !===
