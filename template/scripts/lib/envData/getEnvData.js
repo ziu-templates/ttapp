@@ -4,6 +4,14 @@ const path = require('path'),
   YAML = require('yaml'),
   merge = require('lodash/merge');
 
+let version = "";
+
+try {
+  version = process.env.npm_package_version;
+} catch (e) {
+  console.error(e);
+}
+
 const envCwd = path.join(process.cwd(), 'config'),
   globConfig = {
     cwd: envCwd,
@@ -22,6 +30,7 @@ const defaultEnv = getEnvData(defaultEnvPath, envCwd),
   env = getEnvData(envFile, envCwd),
   envMergeData = merge({
     PRJ_ENV,
+    VERSION: version,
   }, defaultEnv, env);
 
 function getEnvData(url = '', envCwd = process.cwd()) {
