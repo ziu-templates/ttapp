@@ -11,7 +11,6 @@ try {
 } catch (e) {
   console.error(e);
 }
-
 const envCwd = path.join(process.cwd(), 'config'),
   globConfig = {
     cwd: envCwd,
