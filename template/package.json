@@ -87,7 +87,7 @@
         {{/gitCommitMsg}}
         "stylelint": "^9.10.1",
         "stylelint-config-ziu": "^1.0.12",
-        "stylelint-webpack-plugin": "^0.10.5",
+        "stylelint-webpack-plugin": "^2.1.1",
         "terser-webpack-plugin": "^1.2.3",
         "url-loader": "^1.1.2",
         {{#performance}}
