@@ -1,4 +1,4 @@
-const merge = require('merge'),
+const merge = require('lodash.merge'),
   { prjEnvComp } = require('./envCompare'),
   envData = require('../envData/getEnvData'),
   distPkg = require('../../etc/project.config');
